@@ -1479,15 +1479,16 @@ class Graph {
             [139,213],
             [145,278],
             [156,261],
-            [],
-            [],
-            [],
-            [],
-            [],
-            [],
-            [],
-            [],
-            [],
+            [167,212],
+            [168,252,273],
+            [177,204],
+            [180,264],
+            [182,204],
+            [191,224],
+            [197,229],
+            [207.247],
+            [216,255],
+            [253,274],
 
         ];
         this.create_matrix();
@@ -4236,6 +4237,8 @@ class Graph {
     copy_line(index_first,index_second){
         this.metro_station_graph[index_second]=this.metro_station_graph[index_first];
     }
+
+
 
     DFS(st, output, end_index) {
         let r;
