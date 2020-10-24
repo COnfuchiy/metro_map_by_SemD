@@ -29,6 +29,7 @@ let graph_matrix_one_empty_line =
             weight: 0,
             cost: 0,
         },
+
         {
             name: "Комсомольская",
             weight: 0,
@@ -1437,8 +1438,60 @@ class Graph {
     constructor(matrix_line) {
         this.matrix_line = matrix_line;
         this.metro_station_graph = [];
+        this.visited = [];
+        this.united_station = [
+            [3,249],
+            [5,85],
+            [7,110,210],
+            [8,136],
+            [9,37,63],
+            [10,184,62,84],
+            [11,164],
+            [12,94],
+            [17,260],
+            [33,245],
+            [34,95],
+            [36,135,183],
+            [38,112,165],
+            [39,88],
+            [43,226],
+            [48,223],
+            [57,74,237],
+            [59,160],
+            [60,81,92],
+            [61,163],
+            [64,86,211],
+            [66,250],
+            [73,161,241],
+            [87,138,166],
+            [89,186],
+            [90,113],
+            [93,162],
+            [94,134],
+            [96,181],
+            [97,208],
+            [98,108],
+            [107,248],
+            [111,137],
+            [119,258],
+            [124,227],
+            [131,243],
+            [139,213],
+            [145,278],
+            [156,261],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+
+        ];
         this.create_matrix();
-    }
+}
 
     create_matrix() {
         this.add_line_in_matrix([{
@@ -1471,9 +1524,13 @@ class Graph {
             weight: 193,
             cost: 65,
         }, {
-            name: "Стромынка",
-            weight: 1,
-            cost: 1,
+            name: "Рубцовская",
+            weight: 352,
+            cost: 64,
+        }, {
+            name: "Ржевская",
+            weight: 642,
+            cost: 84,
         },{
             name: "Красносельская",
             weight: 593,
@@ -1495,10 +1552,6 @@ class Graph {
             weight: 678,
             cost: 43,
         }, {
-            name: "Комсомольская",
-            weight: 1,
-            cost: 1,
-        }, {
             name: "Красные ворота",
             weight: 122,
             cost: 53,
@@ -1519,17 +1572,25 @@ class Graph {
             weight: 291,
             cost: 35,
         }, {
-            name: "Лубянка",
-            weight: 739,
+            name: "Сухаревская",
+            weight: 413,
+            cost: 93,
+        }, {
+            name: "Трубная",
+            weight: 247,
             cost: 49,
         },{
-            name: "Тургеневская",
-            weight: 1,
-            cost: 1,
+            name: "Чкаловская",
+            weight: 239,
+            cost: 71,
         },{
-            name: "Сретенский бульвар",
-            weight: 1,
-            cost: 1,
+            name: "Китай-город",
+            weight: 934,
+            cost: 41,
+        }, {
+            name: "Лубянка",
+            weight: 73,
+            cost: 10,
         },
         ], 7);
         this.add_line_in_matrix([{
@@ -1538,6 +1599,14 @@ class Graph {
             cost: 49,
         }, {
             name: "Охотный ряд",
+            weight: 543,
+            cost: 62,
+        }, {
+            name: "Пушкинская",
+            weight: 543,
+            cost: 62,
+        }, {
+            name: "Китай-город",
             weight: 543,
             cost: 62,
         },
@@ -1550,14 +1619,18 @@ class Graph {
             name: "Библиотека имени Ленина",
             weight: 361,
             cost: 23,
-        },{
-            name: "Театральная",
-            weight: 1,
-            cost: 1,
-        },{
-            name: "Площадь Революции",
-            weight: 1,
-            cost: 1,
+        }, {
+            name: "Арбатская",
+            weight: 241,
+            cost: 73,
+        },  {
+            name: "Тверская",
+            weight: 793,
+            cost: 65,
+        }, {
+            name: "Новокузнецкая",
+            weight: 387,
+            cost: 74,
         },
         ], 9);
         this.add_line_in_matrix([{
@@ -1568,18 +1641,26 @@ class Graph {
             name: "Кропоткинская",
             weight: 563,
             cost: 93,
+        }, {
+            name: "Чеховская",
+            weight: 324,
+            cost: 73,
+        }, {
+            name: "Полянка",
+            weight: 567,
+            cost: 24,
+        }, {
+            name: "Площадь Революции",
+            weight: 719,
+            cost: 34,
+        }, {
+            name: "Смоленская",
+            weight: 746,
+            cost: 27,
         },{
-            name: "Александровский сад",
-            weight: 1,
-            cost: 1,
-        },{
-            name: "Арбатская",
-            weight: 1,
-            cost: 1,
-        },{
-            name: "Боровицкая",
-            weight: 1,
-            cost: 1,
+            name: "Арбатская-2",
+            weight: 134,
+            cost: 61,
         },
         ], 10);
         this.add_line_in_matrix([{
@@ -1590,10 +1671,14 @@ class Graph {
             name: "Парк Культуры",
             weight: 413,
             cost: 30,
+        }, {
+            name: "Плющиха",
+            weight: 681,
+            cost: 42,
         },{
-            name: "Волхонка",
-            weight: 1,
-            cost: 1,
+            name: "Третьяковская",
+            weight: 781,
+            cost: 93,
         },
         ], 11);
         this.add_line_in_matrix([{
@@ -1604,10 +1689,14 @@ class Graph {
             name: "Фрунзенская",
             weight: 109,
             cost: 32,
+        }, {
+            name: "Киевская",
+            weight: 724,
+            cost: 17,
         },{
-            name: "Парк Культуры",
-            weight: 1,
-            cost: 1,
+            name: "Октябрьская",
+            weight: 346,
+            cost: 24,
         },
         ], 12);
         this.add_line_in_matrix([{
@@ -1656,6 +1745,14 @@ class Graph {
             cost: 53,
         }, {
             name: "Юго-Западная",
+            weight: 631,
+            cost: 53,
+        },{
+            name: "Мичуринский проспект",
+            weight: 631,
+            cost: 53,
+        },{
+            name: "Улица Новаторов",
             weight: 631,
             cost: 53,
         },
@@ -1810,10 +1907,14 @@ class Graph {
             name: "Белорусская",
             weight: 466,
             cost: 67,
+        }, {
+            name: "ЦСКА",
+            weight: 466,
+            cost: 67,
         },{
-            name: "Петровский Парк",
-            weight: 1,
-            cost: 1,
+            name: "Н.Масловка",
+            weight: 797,
+            cost: 56,
         },
         ], 33);
         this.add_line_in_matrix([{
@@ -1824,10 +1925,14 @@ class Graph {
             name: "Маяковская",
             weight: 937,
             cost: 78,
+        }, {
+            name: "Краснопресненская",
+            weight: 434,
+            cost: 78,
         },{
-            name: "Белорусская",
-            weight: 1,
-            cost: 1,
+            name: "Новослободская",
+            weight: 734,
+            cost: 173,
         },
         ], 34);
         this.add_line_in_matrix([{
@@ -1848,32 +1953,48 @@ class Graph {
             name: "Театральная",
             weight: 746,
             cost: 26,
+        }, {
+            name: "Баррикадная",
+            weight: 746,
+            cost: 26,
         },{
-            name: "Пушкинская",
-            weight: 1,
-            cost: 1,
+            name: "Кузнецкий мост",
+            weight: 746,
+            cost: 26,
         },{
-            name: "Чеховская",
-            weight: 1,
-            cost: 1,
+            name: "Цветной бульвар",
+            weight: 746,
+            cost: 26,
+        },{
+            name: "Боровицкая",
+            weight: 746,
+            cost: 26,
         },
         ], 36);
         this.add_line_in_matrix([{
+            name: "Лубянка",
+            weight: 543,
+            cost: 62,
+        }, {
+            name: "Библиотека имени Ленина",
+            weight: 361,
+            cost: 23,
+        }, {
+            name: "Арбатская",
+            weight: 241,
+            cost: 73,
+        }, {
+            name: "Курская",
+            weight: 246,
+            cost: 19,
+        },{
             name: "Тверская",
-            weight: 746,
-            cost: 26,
+            weight: 793,
+            cost: 65,
         }, {
             name: "Новокузнецкая",
-            weight: 469,
-            cost: 50,
-        },{
-            name: "Охотный ряд",
-            weight: 1,
-            cost: 1,
-        },{
-            name: "Площадь Революции",
-            weight: 1,
-            cost: 1,
+            weight: 387,
+            cost: 74,
         },
         ], 37);
         this.add_line_in_matrix([{
@@ -1882,6 +2003,22 @@ class Graph {
             cost: 50,
         }, {
             name: "Павелецкая",
+            weight: 919,
+            cost: 29,
+        },{
+            name: "Октябрьская",
+            weight: 469,
+            cost: 50,
+        }, {
+            name: "Китай-город",
+            weight: 919,
+            cost: 29,
+        },{
+            name: "Волхонка",
+            weight: 469,
+            cost: 50,
+        }, {
+            name: "Марксистская",
             weight: 919,
             cost: 29,
         },
@@ -1894,10 +2031,14 @@ class Graph {
             name: "Автозаводская",
             weight: 634,
             cost: 70,
+        }, {
+            name: "Добрынинская",
+            weight: 634,
+            cost: 70,
         },{
-            name: "Павелецкая",
-            weight: 1,
-            cost: 1,
+            name: "Таганская",
+            weight: 634,
+            cost: 70,
         },
         ], 39);
         this.add_line_in_matrix([{
@@ -1938,10 +2079,14 @@ class Graph {
             name: "Кантемировская",
             weight: 461,
             cost: 56,
+        }, {
+            name: "Варшавская",
+            weight: 461,
+            cost: 56,
         },{
-            name: "Каширская",
-            weight: 1,
-            cost: 1,
+            name: "Кленовый бульвар",
+            weight: 461,
+            cost: 56,
         },
         ], 43);
         this.add_line_in_matrix([{
@@ -1992,6 +2137,10 @@ class Graph {
             name: "Алма-Атинская",
             weight: 777,
             cost: 88,
+        },{
+            name: "Шипиловская",
+            weight: 436,
+            cost: 72,
         },
         ], 48);
         this.add_line_in_matrix([{
@@ -2074,6 +2223,18 @@ class Graph {
             name: "Славянский бульвар",
             weight: 355,
             cost: 88,
+        }, {
+            name: "Давыдково",
+            weight: 355,
+            cost: 88,
+        }, {
+            name: "Терехово",
+            weight: 355,
+            cost: 88,
+        }, {
+            name: "Пионерская",
+            weight: 355,
+            cost: 88,
         },
         ], 57);
         this.add_line_in_matrix([{
@@ -2094,6 +2255,14 @@ class Graph {
             name: "Киевская",
             weight: 123,
             cost: 46,
+        },{
+            name: "Минская",
+            weight: 123,
+            cost: 46,
+        },{
+            name: "Деловой центр",
+            weight: 123,
+            cost: 46,
         },
         ], 59);
         this.add_line_in_matrix([{
@@ -2105,13 +2274,25 @@ class Graph {
             weight: 817,
             cost: 39,
         },{
-            name: "Киевская",
-            weight: 1,
-            cost: 1,
+            name: "Студенческая",
+            weight: 817,
+            cost: 39,
         },{
-            name: "Киевская",
-            weight: 1,
-            cost: 1,
+            name: "Выставочная",
+            weight: 817,
+            cost: 39,
+        },{
+            name: "Смоленская-2",
+            weight: 817,
+            cost: 39,
+        },{
+            name: "Российская",
+            weight: 817,
+            cost: 39,
+        },{
+            name: "Парк Культуры",
+            weight: 817,
+            cost: 39,
         },
         ], 60);
         this.add_line_in_matrix([{
@@ -2122,52 +2303,66 @@ class Graph {
             name: "Арбатская",
             weight: 457,
             cost: 72,
+        }, {
+            name: "Дорогомиловская",
+            weight: 457,
+            cost: 72,
         },{
-            name: "Плющиха",
-            weight: 1,
-            cost: 1,
+            name: "Волхонка",
+            weight: 457,
+            cost: 72,
         },
         ], 61);
         this.add_line_in_matrix([{
-            name: "Смоленская",
-            weight: 457,
-            cost: 72,
+            name: "Охотный ряд",
+            weight: 361,
+            cost: 23,
+        }, {
+            name: "Кропоткинская",
+            weight: 563,
+            cost: 93,
+        }, {
+            name: "Чеховская",
+            weight: 324,
+            cost: 73,
+        }, {
+            name: "Полянка",
+            weight: 567,
+            cost: 24,
         }, {
             name: "Площадь Революции",
-            weight: 367,
-            cost: 14,
-        },{
-            name: "Библиотека имени Ленина",
-            weight: 1,
-            cost: 1,
-        },{
-            name: "Боровицкая",
-            weight: 1,
-            cost: 1,
-        },{
-            name: "Александровский сад",
-            weight: 1,
-            cost: 1,
-        },
-        ], 62);
-        this.add_line_in_matrix([{
-            name: "Арбатская",
-            weight: 367,
-            cost: 14,
+            weight: 719,
+            cost: 34,
         }, {
-            name: "Курская",
-            weight: 999,
-            cost: 74,
+            name: "Смоленская",
+            weight: 746,
+            cost: 27,
         },{
-            name: "Театральная",
-            weight: 1,
-            cost: 1,
-        },{
-            name: "Охотный ряд",
-            weight: 1,
-            cost: 1,
+            name: "Арбатская-2",
+            weight: 134,
+            cost: 61,
         },
-        ], 63);
+
+        ], 62);
+        // this.add_line_in_matrix([{
+        //     name: "Арбатская",
+        //     weight: 367,
+        //     cost: 14,
+        // }, {
+        //     name: "Курская",
+        //     weight: 999,
+        //     cost: 74,
+        // }, {
+        //     name: "Театральная",
+        //     weight: 1,
+        //     cost: 1,
+        // }, {
+        //     name: "Охотный ряд",
+        //     weight: 1,
+        //     cost: 1,
+        // },
+        // ], 63);
+        this.copy_line(9,63);
         this.add_line_in_matrix([{
             name: "Площадь Революции",
             weight: 999,
@@ -2176,14 +2371,22 @@ class Graph {
             name: "Бауманская",
             weight: 552,
             cost: 24,
+        }, {
+            name: "Сретенский бульвар",
+            weight: 552,
+            cost: 24,
+        }, {
+            name: "Римская",
+            weight: 552,
+            cost: 24,
         },{
-            name: "Курская",
-            weight: 1,
-            cost: 1,
+            name: "Комсомольская",
+            weight: 552,
+            cost: 24,
         },{
-            name: "Чкаловская",
-            weight: 1,
-            cost: 1,
+            name: "Таганская",
+            weight: 552,
+            cost: 24,
         },
         ], 64);
         this.add_line_in_matrix([{
@@ -2205,9 +2408,13 @@ class Graph {
             weight: 883,
             cost: 79,
         },{
-            name: "Рубцовская",
-            weight: 1,
-            cost: 1,
+            name: "Стромынка",
+            weight: 883,
+            cost: 79,
+        },{
+            name: "Лефортово",
+            weight: 883,
+            cost: 79,
         },
         ], 66);
         this.add_line_in_matrix([{
@@ -2270,13 +2477,17 @@ class Graph {
             name: "Киевская",
             weight: 745,
             cost: 44,
+        }, {
+            name: "Шелепиха",
+            weight: 745,
+            cost: 44,
         },{
-            name: "Деловой центр",
-            weight: 1,
-            cost: 1,
+            name: "Парк Победы",
+            weight: 745,
+            cost: 44,
         },
         ], 73);
-
+        this.copy_line(57,74);
         this.add_line_in_matrix([{
             name: "Пионерская",
             weight: 567,
@@ -2343,28 +2554,7 @@ class Graph {
             cost: 33,
         },
         ], 80);
-        this.add_line_in_matrix([{
-            name: "Смоленская-2",
-            weight: 643,
-            cost: 352,
-        }, {
-            name: "Студенческая",
-            weight: 634,
-            cost: 33,
-        },{
-            name: "Киевская",
-            weight: 1,
-            cost: 1,
-        },{
-            name: "Киевская",
-            weight: 1,
-            cost: 1,
-        },{
-            name: "Выставочная",
-            weight: 634,
-            cost: 33,
-        }
-        ], 81);
+        this.copy_line(60,81);
         this.add_line_in_matrix([{
             name: "Киевская",
             weight: 643,
@@ -2385,88 +2575,36 @@ class Graph {
             cost: 41,
         },
         ], 83);
-        this.add_line_in_matrix([{
-            name: "Арбатская-2",
-            weight: 331,
-            cost: 41,
-        }, {
-            name: "Арбатская",
-            weight: 1,
-            cost: 1,
-        },{
-            name: "Боровицкая",
-            weight: 1,
-            cost: 1,
-        },{
-            name: "Библиотека имени Ленина",
-            weight: 1,
-            cost: 1,
-        },
-        ], 84);
-        this.add_line_in_matrix([{
-            name: "Проспект Мира",
-            weight: 875,
-            cost: 90,
-        }, {
-            name: "Комсомольская",
-            weight: 1,
-            cost: 1,
-        },{
-            name: "Курская",
-            weight: 657,
-            cost: 88,
-        },
-        ], 85);
-        this.add_line_in_matrix([{
-            name: "Комсомольская",
-            weight: 657,
-            cost: 88,
-        }, {
-            name: "Таганская",
-            weight: 923,
-            cost: 81,
-        },{
-            name: "Чкаловская",
-            weight: 1,
-            cost: 1,
-        },{
-            name: "Курская",
-            weight: 1,
-            cost: 1,
-        },
-        ], 86);
+        this.copy_line(10,84);
+        this.copy_line(5,85);
+        this.copy_line(64,86);
         this.add_line_in_matrix([{
             name: "Курская",
             weight: 923,
             cost: 81,
         }, {
-            name: "Таганская",
-            weight: 1,
-            cost: 1,
-        },{
-            name: "Марксистская",
-            weight: 1,
-            cost: 1,
-        },{
             name: "Павелецкая",
+            weight: 803,
+            cost: 70,
+        }, {
+            name: "Пролетарская",
+            weight: 803,
+            cost: 70,
+        },{
+            name: "Китай-город",
+            weight: 803,
+            cost: 70,
+        },{
+            name: "Третьяковская",
+            weight: 803,
+            cost: 70,
+        }, {
+            name: "Площадь Ильича",
             weight: 803,
             cost: 70,
         },
         ], 87);
-        this.add_line_in_matrix([{
-            name: "Таганская",
-            weight: 803,
-            cost: 70,
-        }, {
-            name: "Павелецкая",
-            weight: 1,
-            cost: 1,
-        },{
-            name: "Добрынинская",
-            weight: 386,
-            cost: 64,
-        },
-        ], 88);
+        this.copy_line(39,88);
         this.add_line_in_matrix([{
             name: "Павелецкая",
             weight: 386,
@@ -2475,10 +2613,14 @@ class Graph {
             name: "Октябрьская",
             weight: 740,
             cost: 60,
+        }, {
+            name: "Полянка",
+            weight: 740,
+            cost: 60,
         },{
-            name: "Серпуховская",
-            weight: 1,
-            cost: 1,
+            name: "Тульская",
+            weight: 740,
+            cost: 60,
         },
         ], 89);
         this.add_line_in_matrix([{
@@ -2489,53 +2631,31 @@ class Graph {
             name: "Парк Культуры",
             weight: 689,
             cost: 50,
-        },{
-            name: "Октябрьская",
-            weight: 1,
-            cost: 1,
-        },
-        ], 90);
-        this.add_line_in_matrix([{
-            name: "Октябрьская",
+        }, {
+            name: "Третьяковская",
             weight: 689,
             cost: 50,
-        }, {
-            name: "Киевская",
-            weight: 299,
-            cost: 78,
         },{
-            name: "Парк Культуры",
-            weight: 1,
-            cost: 1,
+            name: "Шаболовская",
+            weight: 689,
+            cost: 50,
         },
-        ], 91);
-        this.add_line_in_matrix([{
-            name: "Парк Культуры",
-            weight: 299,
-            cost: 78,
-        }, {
-            name: "Российская",
-            weight: 728,
-            cost: 88,
-        },{
-            name: "Киевская",
-            weight: 1,
-            cost: 1,
-        },{
-            name: "Киевская",
-            weight: 1,
-            cost: 1,
-        },
-        ], 92);
+        ], 90);
+        this.copy_line(12,91);
+        this.copy_line(60,92);
         this.add_line_in_matrix([{
             name: "Киевская",
             weight: 728,
             cost: 88,
+        },  {
+            name: "Выставочная",
+            weight: 117,
+            cost: 30,
         }, {
-            name: "Дорогомиловская",
-            weight: 1,
-            cost: 1,
-        },{
+            name: "Плющиха",
+            weight: 117,
+            cost: 30,
+        }, {
             name: "Краснопресненская",
             weight: 117,
             cost: 30,
@@ -2546,38 +2666,33 @@ class Graph {
             weight: 117,
             cost: 30,
         }, {
-            name: "Баррикадная",
-            weight: 1,
-            cost: 1,
+            name: "Улица 1905 года",
+            weight: 117,
+            cost: 30,
+        },{
+            name: "Пушкинская",
+            weight: 117,
+            cost: 30,
         },{
             name: "Белорусская",
             weight: 942,
             cost: 66,
         },
         ], 94);
-        this.add_line_in_matrix([{
-            name: "Краснопресненская",
-            weight: 942,
-            cost: 66,
-        }, {
-            name: "Белорусская",
-            weight: 1,
-            cost: 1,
-        },{
-            name: "Новослободская",
-            weight: 489,
-            cost: 152,
-        },
-        ], 95);
+        this.copy_line(34,95);
         this.add_line_in_matrix([{
             name: "Белорусская",
             weight: 489,
             cost: 152,
         }, {
-            name: "Менделеевская",
-            weight: 1,
-            cost: 1,
-        },{
+            name: "Савёловская",
+            weight: 489,
+            cost: 152,
+        }, {
+            name: "Цветной бульвар",
+            weight: 489,
+            cost: 152,
+        },  {
             name: "Суворовская",
             weight: 478,
             cost: 55,
@@ -2588,10 +2703,14 @@ class Graph {
             weight: 478,
             cost: 55,
         }, {
-            name: "Достоевская",
-            weight: 1,
-            cost: 1,
+            name: "Марьина Роща",
+            weight: 691,
+            cost: 44,
         },{
+            name: "Трубная",
+            weight: 691,
+            cost: 44,
+        }, {
             name: "Проспект Мира",
             weight: 691,
             cost: 44,
@@ -2601,10 +2720,14 @@ class Graph {
             name: "Суворовская",
             weight: 691,
             cost: 44,
+        }, {
+            name: "Рижская",
+            weight: 771,
+            cost: 18,
         },{
-            name: "Проспект Мира",
-            weight: 1,
-            cost: 1,
+            name: "Сухаревская",
+            weight: 771,
+            cost: 18,
         }, {
             name: "Комсомольская",
             weight: 771,
@@ -2692,29 +2815,20 @@ class Graph {
             weight: 840,
             cost: 60,
         }, {
-            name: "Ржевская",
-            weight: 1,
-            cost: 1,
+            name: "Шереметьевская",
+            weight: 203,
+            cost: 51,
         },{
+            name: "Стромынка",
+            weight: 203,
+            cost: 51,
+        }, {
             name: "Проспект Мира",
             weight: 203,
             cost: 51,
         },
         ], 107);
-        this.add_line_in_matrix([{
-            name: "Ржевская",
-            weight: 203,
-            cost: 51,
-        }, {
-            name: "Проспект Мира",
-            weight: 1,
-            cost: 1,
-        },{
-            name: "Сухаревская",
-            weight: 349,
-            cost: 21,
-        },
-        ], 108);
+        this.copy_line(98,108);
         this.add_line_in_matrix([{
             name: "Проспект Мира",
             weight: 349,
@@ -2725,70 +2839,27 @@ class Graph {
             cost: 30,
         },
         ], 109);
-        this.add_line_in_matrix([{
-            name: "Сухаревская",
-            weight: 440,
-            cost: 30,
-        }, {
-            name: "Чистые пруды",
-            weight: 1,
-            cost: 1,
-        },{
-            name: "Сретенский бульвар",
-            weight: 1,
-            cost: 1,
-        },{
-            name: "Китай-город",
-            weight: 536,
-            cost: 80,
-        },
-        ], 110);
+        this.copy_line(7,110);
         this.add_line_in_matrix([{
             name: "Тургеневская",
             weight: 536,
             cost: 80,
         }, {
-            name: "Китай-город",
-            weight: 1,
-            cost: 1,
+            name: "Кузнецкий мост",
+            weight: 104,
+            cost: 60,
         },{
+            name: "Таганская",
+            weight: 104,
+            cost: 60,
+        }, {
             name: "Третьяковская",
             weight: 104,
             cost: 60,
         },
         ], 111);
-        this.add_line_in_matrix([{
-            name: "Китай-город",
-            weight: 104,
-            cost: 60,
-        }, {
-            name: "Третьяковская",
-            weight: 1,
-            cost: 1,
-        },{
-            name: "Новокузнецкая",
-            weight: 1,
-            cost: 1,
-        },{
-            name: "Октябрьская",
-            weight: 850,
-            cost: 60,
-        },
-        ], 112);
-        this.add_line_in_matrix([{
-            name: "Третьяковская",
-            weight: 850,
-            cost: 60,
-        }, {
-            name: "Октябрьская",
-            weight: 1,
-            cost: 1,
-        },{
-            name: "Шаболовская",
-            weight: 461,
-            cost: 33,
-        },
-        ], 113);
+        this.copy_line(38, 112);
+        this.copy_line(90, 113);
         this.add_line_in_matrix([{
             name: "Октябрьская",
             weight: 461,
@@ -2844,10 +2915,14 @@ class Graph {
             weight: 446,
             cost: 55,
         }, {
-            name: "Воронцовская",
-            weight: 1,
-            cost: 1,
+            name: "Зюзино",
+            weight: 886,
+            cost: 13,
         },{
+            name: "Улица Новаторов",
+            weight: 886,
+            cost: 13,
+        }, {
             name: "Беляево",
             weight: 886,
             cost: 13,
@@ -2898,7 +2973,7 @@ class Graph {
             weight: 554,
             cost: 19,
         }, {
-            name: "Битцевский парк",
+            name: "Лесопарковая",
             weight: 666,
             cost: 78,
         },
@@ -2964,10 +3039,14 @@ class Graph {
             weight: 203,
             cost: 51,
         }, {
-            name: "Хорошёвская",
-            weight: 1,
-            cost: 1,
+            name: "ЦСКА",
+            weight: 660,
+            cost: 40,
         },{
+            name: "Шелепиха",
+            weight: 660,
+            cost: 40,
+        }, {
             name: "Беговая",
             weight: 660,
             cost: 40,
@@ -2993,93 +3072,24 @@ class Graph {
             cost: 89,
         },
         ], 133);
-        this.add_line_in_matrix([{
-            name: "Улица 1905 года",
-            weight: 635,
-            cost: 89,
-        }, {
-            name: "Краснопресненская",
-            weight: 1,
-            cost: 1,
-        }, {
-            name: "Пушкинская",
-            weight: 839,
-            cost: 66,
-        },
-        ], 134);
-        this.add_line_in_matrix([{
-            name: "Баррикадная",
-            weight: 839,
-            cost: 66,
-        }, {
-            name: "Тверская",
-            weight: 1,
-            cost: 1,
-        },{
-            name: "Чеховская",
-            weight: 1,
-            cost: 1,
-        },{
-            name: "Кузнецкий мост",
-            weight: 833,
-            cost: 70,
-        },
-        ], 135);
-        this.add_line_in_matrix([{
-            name: "Пушкинская",
-            weight: 100000000000000,
-            cost: 100000000000000,
-        }, {
-            name: "Лубянка",
-            weight: 1,
-            cost: 1,
-        }, {
-            name: "Китай-город",
-            weight: 583,
-            cost: 73,
-        },
-        ], 136);
-        this.add_line_in_matrix([{
-            name: "Кузнецкий мост",
-            weight: 583,
-            cost: 73,
-        }, {
-            name: "Китай-город",
-            weight: 1,
-            cost: 1,
-        },{
-            name: "Таганская",
-            weight: 433,
-            cost: 69,
-        },
-        ], 137);
-        this.add_line_in_matrix([{
-            name: "Китай-город",
-            weight: 433,
-            cost: 69,
-        }, {
-            name: "Таганская",
-            weight: 1,
-            cost: 1,
-        },{
-            name: "Марксистская",
-            weight: 1,
-            cost: 1,
-        },{
-            name: "Пролетарская",
-            weight: 900,
-            cost: 63,
-        },
-        ], 138);
+        this.copy_line(94, 134);
+        this.copy_line(36, 135);
+        this.copy_line(8, 136);
+        this.copy_line(111, 137);
+        this.copy_line(87, 138);
         this.add_line_in_matrix([{
             name: "Таганская",
             weight: 900,
             cost: 63,
         }, {
-            name: "Крестьянская застава",
-            weight: 1,
-            cost: 1,
+            name: "Дубровка",
+            weight: 553,
+            cost: 78,
         },{
+            name: "Римская",
+            weight: 553,
+            cost: 78,
+        }, {
             name: "Волгоградский проспект",
             weight: 553,
             cost: 78,
@@ -3100,6 +3110,14 @@ class Graph {
             weight: 419,
             cost: 38,
         }, {
+            name: "Южнопортовая",
+            weight: 391,
+            cost: 78,
+        },{
+            name: "Нижегородская улица",
+            weight: 391,
+            cost: 78,
+        },{
             name: "Кузьминки",
             weight: 391,
             cost: 78,
@@ -3140,10 +3158,14 @@ class Graph {
             weight: 559,
             cost: 70,
         }, {
-            name: "Косино",
-            weight: 1,
-            cost: 1,
+            name: "Улица Дмитриевского",
+            weight: 492,
+            cost: 50,
         },{
+            name: "Юго-восточная улица",
+            weight: 492,
+            cost: 50,
+        }, {
             name: "Жулебино",
             weight: 492,
             cost: 50,
@@ -3246,9 +3268,13 @@ class Graph {
             weight: 880,
             cost: 71,
         }, {
-            name: "Мичуринский проспект",
-            weight: 1,
-            cost: 1,
+            name: "Аминьевское шоссе",
+            weight: 741,
+            cost: 68,
+        },{
+            name: "Проспект Вернадского",
+            weight: 741,
+            cost: 68,
         },{
             name: "Раменки",
             weight: 741,
@@ -3285,120 +3311,25 @@ class Graph {
             cost: 80,
         },
         ], 159);
-        this.add_line_in_matrix([{
-            name: "Минская",
-            weight: 441,
-            cost: 80,
-        }, {
-            name: "Парк Победы",
-            weight: 1,
-            cost: 1,
-        },{
-            name: "Деловой центр",
-            weight: 669,
-            cost: 55,
-        },
-        ], 160);
-        this.add_line_in_matrix([{
-            name: "Парк Победы",
-            weight: 669,
-            cost: 55,
-        }, {
-            name: "Деловой центр",
-            weight: 1,
-            cost: 1,
-        },{
-            name: "Выставочная",
-            weight: 1,
-            cost: 1,
-        },{
-            name: "Дорогомиловская",
-            weight: 680,
-            cost: 36,
-        },
-        ], 161);
-        this.add_line_in_matrix([{
-            name: "Деловой центр",
-            weight: 680,
-            cost: 36,
-        }, {
-            name: "Российская",
-            weight: 1,
-            cost: 1,
-        }, {
-            name: "Плющиха",
-            weight: 397,
-            cost: 216,
-        },
-        ], 162);
-        this.add_line_in_matrix([{
-            name: "Дорогомиловская",
-            weight: 397,
-            cost: 216,
-        }, {
-            name: "Смоленская",
-            weight: 1,
-            cost: 1,
-        },{
-            name: "Волхонка",
-            weight: 300,
-            cost: 40,
-        },
-        ], 163);
-        this.add_line_in_matrix([{
-            name: "Плющиха",
-            weight: 300,
-            cost: 40,
-        }, {
-            name: "Кропоткинская",
-            weight: 1,
-            cost: 1,
-        },{
-            name: "Третьяковская",
-            weight: 841,
-            cost: 71,
-        },
-        ], 164);
-        this.add_line_in_matrix([{
-            name: "Волхонка",
-            weight: 841,
-            cost: 71,
-        }, {
-            name: "Третьяковская",
-            weight: 1,
-            cost: 1,
-        },{
-            name: "Новокузнецкая",
-            weight: 1,
-            cost: 1,
-        },{
-            name: "Марксистская",
-            weight: 469,
-            cost: 37,
-        },
-        ], 165);
-        this.add_line_in_matrix([{
-            name: "Третьяковская",
-            weight: 469,
-            cost: 37,
-        }, {
-            name: "Таганская",
-            weight: 1,
-            cost: 1,
-        },{
-            name: "Площадь Ильича",
-            weight: 663,
-            cost: 18,
-        },
-        ], 166);
+        this.copy_line(59,160);
+        this.copy_line(59,161);
+        this.copy_line(93,162);
+        this.copy_line(61,163);
+        this.copy_line(11,164);
+        this.copy_line(112,165);
+        this.copy_line(87,166);
         this.add_line_in_matrix([{
             name: "Марксистская",
             weight: 663,
             cost: 18,
         }, {
-            name: "Римская",
-            weight: 1,
-            cost: 1,
+            name: "Чкаловская",
+            weight: 408,
+            cost: 79,
+        },{
+            name: "Крестьянская застава",
+            weight: 408,
+            cost: 79,
         },{
             name: "Авиамоторная",
             weight: 408,
@@ -3410,9 +3341,13 @@ class Graph {
             weight: 408,
             cost: 79,
         }, {
-            name: "Авиамоторная",
-            weight: 1,
-            cost: 1,
+            name: "Лефортово",
+            weight: 408,
+            cost: 79,
+        },{
+            name: "Нижегородская улица",
+            weight: 408,
+            cost: 79,
         },{
             name: "Шоссе Энтузиастов",
             weight: 276,
@@ -3496,10 +3431,14 @@ class Graph {
             weight: 743,
             cost: 58,
         }, {
-            name: "Петровско-Разумовская",
-            weight: 1,
-            cost: 1,
+            name: "Окружная",
+            weight: 269,
+            cost: 45,
         },{
+            name: "Фонвизинская",
+            weight: 269,
+            cost: 45,
+        }, {
             name: "Тимирязевская",
             weight: 269,
             cost: 45,
@@ -3530,83 +3469,40 @@ class Graph {
             weight: 793,
             cost: 49,
         }, {
-            name: "Н.Масловка",
-            weight: 1,
-            cost: 1,
+            name: "Петровский Парк",
+            weight: 446,
+            cost: 11,
+        },{
+            name: "Шереметьевская",
+            weight: 446,
+            cost: 11,
         }, {
             name: "Менделеевская",
             weight: 446,
             cost: 11,
         },
         ], 180);
-        this.add_line_in_matrix([{
-            name: "Савёловская",
-            weight: 446,
-            cost: 11,
-        }, {
-            name: "Новослободская",
-            weight: 1,
-            cost: 1,
-        }, {
-            name: "Цветной бульвар",
-            weight: 447,
-            cost: 66,
-        },
-        ], 181);
+        this.copy_line(96,181);
         this.add_line_in_matrix([{
             name: "Менделеевская",
             weight: 447,
             cost: 66,
         }, {
-            name: "Трубная",
-            weight: 1,
-            cost: 1,
+            name: "Достоевская",
+            weight: 489,
+            cost: 55,
         },{
+            name: "Сретенский бульвар",
+            weight: 489,
+            cost: 55,
+        }, {
             name: "Чеховская",
             weight: 489,
             cost: 55,
         },
         ], 182);
-        this.add_line_in_matrix([{
-            name: "Цветной бульвар",
-            weight: 489,
-            cost: 55,
-        }, {
-            name: "Пушкинская",
-            weight: 1,
-            cost: 1,
-        },{
-            name: "Тверская",
-            weight: 1,
-            cost: 1,
-        },{
-            name: "Боровицкая",
-            weight: 863,
-            cost: 91,
-        },
-        ], 183);
-        this.add_line_in_matrix([{
-            name: "Чеховская",
-            weight: 863,
-            cost: 91,
-        }, {
-            name: "Арбатская",
-            weight: 1,
-            cost: 1,
-        },{
-            name: "Библиотека имени Ленина",
-            weight: 1,
-            cost: 1,
-        },{
-            name: "Александровский сад",
-            weight: 1,
-            cost: 1,
-        },{
-            name: "Полянка",
-            weight: 663,
-            cost: 82,
-        },
-        ], 184);
+        this.copy_line(36,183);
+        this.copy_line(10,184);
         this.add_line_in_matrix([{
             name: "Боровицкая",
             weight: 663,
@@ -3617,20 +3513,7 @@ class Graph {
             cost: 84,
         },
         ], 185);
-        this.add_line_in_matrix([{
-            name: "Полянка",
-            weight: 720,
-            cost: 84,
-        }, {
-            name: "Добрынинская",
-            weight: 1,
-            cost: 1,
-        },{
-            name: "Тульская",
-            weight: 653,
-            cost: 23,
-        },
-        ], 186);
+        this.copy_line(89,186);
         this.add_line_in_matrix([{
             name: "Серпуховская",
             weight: 653,
@@ -3676,10 +3559,14 @@ class Graph {
             weight: 660,
             cost: 93,
         }, {
-            name: "Каховская",
-            weight: 1,
-            cost: 1,
-        }, {
+            name: "Варшавская",
+            weight: 590,
+            cost: 62,
+        },{
+            name: "Зюзино",
+            weight: 590,
+            cost: 62,
+        },{
             name: "Чертановская",
             weight: 590,
             cost: 62,
@@ -3740,9 +3627,13 @@ class Graph {
             weight: 695,
             cost: 143,
         }, {
-            name: "Улица Старокачаловская",
-            weight: 1,
-            cost: 1,
+            name: "Лесопарковая",
+            weight: 695,
+            cost: 143,
+        },{
+            name: "Улица Скобелевская",
+            weight: 695,
+            cost: 143,
         },
         ], 197);
         this.add_line_in_matrix([{
@@ -3801,20 +3692,7 @@ class Graph {
             cost: 28,
         },
         ], 203);
-        this.add_line_in_matrix([{
-            name: "Окружная",
-            weight: 509,
-            cost: 28,
-        }, {
-            name: "Петровско-Разумовская",
-            weight: 1,
-            cost: 1,
-        },{
-            name: "Фонвизинская",
-            weight: 487,
-            cost: 52,
-        },
-        ], 204);
+        this.copy_line(177,204);
         this.add_line_in_matrix([{
             name: "Петровско-Разумовская",
             weight: 487,
@@ -3839,104 +3717,26 @@ class Graph {
             name: "Бутырская",
             weight: 706,
             cost: 52,
-        }, {
-            name: "Шереметьевская",
-            weight: 1,
-            cost: 1,
-        }, {
+        },{
+            name: "Савёловская",
+            weight: 833,
+            cost: 48,
+        },{
+            name: "Ржевская",
+            weight: 833,
+            cost: 48,
+        },{
             name: "Достоевская",
             weight: 833,
             cost: 48,
         },
         ], 207);
-        this.add_line_in_matrix([{
-            name: "Марьина Роща",
-            weight: 833,
-            cost: 48,
-        }, {
-            name: "Суворовская",
-            weight: 1,
-            cost: 1,
-        }, {
-            name: "Трубная",
-            weight: 634,
-            cost: 80,
-        },
-        ], 208);
-        this.add_line_in_matrix([{
-            name: "Достоевская",
-            weight: 634,
-            cost: 80,
-        }, {
-            name: "Цветной бульвар",
-            weight: 1,
-            cost: 1,
-        },{
-            name: "Сретенский бульвар",
-            weight: 934,
-            cost: 23,
-        },
-        ], 209);
-        this.add_line_in_matrix([{
-            name: "Трубная",
-            weight: 934,
-            cost: 23,
-        }, {
-            name: "Тургеневская",
-            weight: 1,
-            cost: 1,
-        },{
-            name: "Чистые пруды",
-            weight: 1,
-            cost: 1,
-        },{
-            name: "Чкаловская",
-            weight: 189,
-            cost: 32,
-        },
-        ], 210);
-        this.add_line_in_matrix([{
-            name: "Сретенский бульвар",
-            weight: 189,
-            cost: 32,
-        }, {
-            name: "Курская",
-            weight: 1,
-            cost: 1,
-        },{
-            name: "Римская",
-            weight: 630,
-            cost: 58,
-        },
-        ], 211);
-        this.add_line_in_matrix([{
-            name: "Чкаловская",
-            weight: 630,
-            cost: 58,
-        }, {
-            name: "Площадь Ильича",
-            weight: 1,
-            cost: 1,
-        },{
-            name: "Крестьянская застава",
-            weight: 426,
-            cost: 83,
-        },
-        ], 212);
-        this.add_line_in_matrix([{
-            name: "Римская",
-            weight: 426,
-            cost: 83,
-        }, {
-            name: "Пролетарская",
-            weight: 1,
-            cost: 1,
-        },{
-            name: "Дубровка",
-            weight: 473,
-            cost: 65,
-        },
-        ], 213);
+        this.copy_line(97,208);
+        this.copy_line(182,209);
+        this.copy_line(7,210);
+        this.copy_line(86,211);
+        this.copy_line(167,212);
+        this.copy_line(139,213);
         this.add_line_in_matrix([{
             name: "Крестьянская застава",
             weight: 473,
@@ -3963,9 +3763,13 @@ class Graph {
             cost: 69,
         }, {
             name: "Южнопортовая",
-            weight: 1,
-            cost: 1,
+            weight: 490,
+            cost: 33,
         },{
+            name: "Текстильщики",
+            weight: 490,
+            cost: 33,
+        }, {
             name: "Волжская",
             weight: 490,
             cost: 33,
@@ -4031,26 +3835,8 @@ class Graph {
             cost: 54,
         },
         ], 222);
-        this.add_line_in_matrix([{
-            name: "Шипиловская",
-            weight: 826,
-            cost: 54,
-        }, {
-            name: "Красногвардейская",
-            weight: 1,
-            cost: 1,
-        },
-        ], 223);
-        this.add_line_in_matrix([{
-            name: "Севастопольская",
-            weight: 1,
-            cost: 1,
-        }, {
-            name: "Варшавская",
-            weight: 476,
-            cost: 83,
-        },
-        ], 224);
+        this.copy_line(48,223);
+        this.copy_line(191,224);
         this.add_line_in_matrix([{
             name: "Каховская",
             weight: 476,
@@ -4061,30 +3847,8 @@ class Graph {
             cost: 70,
         },
         ], 225);
-        this.add_line_in_matrix([{
-            name: "Варшавская",
-            weight: 475,
-            cost: 70,
-        }, {
-            name: "Каширская",
-            weight: 1,
-            cost: 1,
-        },{
-            name: "Кленовый бульвар",
-            weight: 734,
-            cost: 88,
-        },
-        ], 226);
-        this.add_line_in_matrix([{
-            name: "Новоясеневская",
-            weight: 1,
-            cost: 1,
-        }, {
-            name: "Лесопарковая",
-            weight: 463,
-            cost: 75,
-        },
-        ], 227);
+        this.copy_line(43, 226);
+        this.copy_line(124,227);
         this.add_line_in_matrix([{
             name: "Битцевский парк",
             weight: 463,
@@ -4095,20 +3859,7 @@ class Graph {
             cost: 67,
         },
         ], 228);
-        this.add_line_in_matrix([{
-            name: "Лесопарковая",
-            weight: 394,
-            cost: 67,
-        }, {
-            name: "Бульвар Дмитрия Донского",
-            weight: 1,
-            cost: 1,
-        },{
-            name: "Улица Скобелевская",
-            weight: 711,
-            cost: 36,
-        },
-        ], 229);
+        this.copy_line(197,229);
         this.add_line_in_matrix([{
             name: "Улица Старокачаловская",
             weight: 711,
@@ -4175,20 +3926,7 @@ class Graph {
             cost: 38,
         },
         ], 236);
-        this.add_line_in_matrix([{
-            name: "Терехово",
-            weight: 1,
-            cost: 1,
-        }, {
-            name: "Давыдково",
-            weight: 999,
-            cost: 99,
-        },{
-            name: "Терехово",
-            weight: 648,
-            cost: 74,
-        },
-        ], 237);
+        this.copy_line(74,237);
         this.add_line_in_matrix([{
             name: "Можайская",
             weight: 648,
@@ -4219,20 +3957,7 @@ class Graph {
             cost: 85,
         },
         ], 240);
-        this.add_line_in_matrix([{
-            name: "Деловой центр",
-            weight: 1,
-            cost: 1,
-        }, {
-            name: "Выставочная",
-            weight: 1,
-            cost: 1,
-        },{
-            name: "Шелепиха",
-            weight: 143,
-            cost: 92,
-        },
-        ], 241);
+        this.copy_line(73,241);
         this.add_line_in_matrix([{
             name: "Деловой центр",
             weight: 143,
@@ -4243,20 +3968,7 @@ class Graph {
             cost: 77,
         },
         ], 242);
-        this.add_line_in_matrix([{
-            name: "Шелепиха",
-            weight: 604,
-            cost: 77,
-        }, {
-            name: "Полежаевская",
-            weight: 1,
-            cost: 1,
-        },{
-            name: "ЦСКА",
-            weight: 719,
-            cost: 66,
-        },
-        ], 243);
+        this.copy_line(131,243);
         this.add_line_in_matrix([{
             name: "Хорошёвская",
             weight: 719,
@@ -4267,90 +3979,12 @@ class Graph {
             cost: 30,
         },
         ], 244);
-        this.add_line_in_matrix([{
-            name: "ЦСКА",
-            weight: 941,
-            cost: 30,
-        }, {
-            name: "Динамо",
-            weight: 1,
-            cost: 1,
-        },{
-            name: "Н.Масловка",
-            weight: 462,
-            cost: 79,
-        },
-        ], 245);
-        this.add_line_in_matrix([{
-            name: "Петровский Парк",
-            weight: 462,
-            cost: 79,
-        }, {
-            name: "Савёловская",
-            weight: 1,
-            cost: 1,
-        },{
-            name: "Шереметьевская",
-            weight: 580,
-            cost: 11,
-        },
-        ], 246);
-        this.add_line_in_matrix([{
-            name: "Н.Масловка",
-            weight: 580,
-            cost: 11,
-        }, {
-            name: "Марьина Роща",
-            weight: 1,
-            cost: 1,
-        },{
-            name: "Ржевская",
-            weight: 716,
-            cost: 28,
-        },
-        ], 247);
-        this.add_line_in_matrix([{
-            name: "Шереметьевская",
-            weight: 716,
-            cost: 28,
-        }, {
-            name: "Рижская",
-            weight: 1,
-            cost: 1,
-        },{
-            name: "Стромынка",
-            weight: 539,
-            cost: 71,
-        },
-        ], 248);
-        this.add_line_in_matrix([{
-            name: "Ржевская",
-            weight: 539,
-            cost: 71,
-        }, {
-            name: "Сокольники",
-            weight: 1,
-            cost: 1,
-        },{
-            name: "Рубцовская",
-            weight: 934,
-            cost: 45,
-        },
-        ], 249);
-        this.add_line_in_matrix([{
-            name: "Стромынка",
-            weight: 934,
-            cost: 45,
-        }, {
-            name: "Электрозаводская",
-            weight: 1,
-            cost: 1,
-        },{
-            name: "Лефортово",
-            weight: 360,
-            cost: 79,
-        },
-        ], 250);
+        this.copy_line(33,245);
+        this.copy_line(180,246);
+        this.copy_line(207,247);
+        this.copy_line(107,248);
+        this.copy_line(3,249);
+        this.copy_line(66,250);
         this.add_line_in_matrix([{
             name: "Рубцовская",
             weight: 360,
@@ -4361,62 +3995,19 @@ class Graph {
             cost: 32,
         },
         ], 251);
+        this.copy_line(168,252);
         this.add_line_in_matrix([{
-            name: "Лефортово",
+            name: "Авиамоторная",
+            weight: 360,
+            cost: 79,
+        }, {
+            name: "Текстильщики",
             weight: 793,
             cost: 32,
-        }, {
-            name: "Нижегородская улица",
-            weight: 862,
-            cost: 43,
-        },{
-            name: "Авиамоторная",
-            weight: 1,
-            cost: 1,
-        },
-        ], 252);
-        this.add_line_in_matrix([{
-            name: "Авиамоторная",
-            weight: 862,
-            cost: 43,
-        }, {
-            name: "Нижегородская улица",
-            weight: 1,
-            cost: 1,
-        },{
-            name: "Текстильщики",
-            weight: 739,
-            cost: 11,
         },
         ], 253);
-        this.add_line_in_matrix([{
-            name: "Нижегородская улица",
-            weight: 739,
-            cost: 11,
-        }, {
-            name: "Текстильщики",
-            weight: 1,
-            cost: 1,
-        },{
-            name: "Южнопортовая",
-            weight: 569,
-            cost: 47,
-        },
-        ], 254);
-        this.add_line_in_matrix([{
-            name: "Текстильщики",
-            weight: 569,
-            cost: 47,
-        }, {
-            name: "Печатники",
-            weight: 1,
-            cost: 1,
-        }, {
-            name: "Кленовый бульвар",
-            weight: 483,
-            cost: 79,
-        },
-        ], 255);
+        this.copy_line(141,254);
+        this.copy_line(216,255);
         this.add_line_in_matrix([{
             name: "Южнопортовая",
             weight: 483,
@@ -4437,62 +4028,23 @@ class Graph {
             cost: 81,
         },
         ], 257);
-        this.add_line_in_matrix([{
-            name: "Зюзино",
-            weight: 135,
-            cost: 81,
-        }, {
-            name: "Калужская",
-            weight: 1,
-            cost: 1,
-        },{
-            name: "Улица Новаторов",
-            weight: 728,
-            cost: 39,
-        },
-        ], 258);
+        this.copy_line(119,258);
         this.add_line_in_matrix([{
             name: "Воронцовская",
             weight: 728,
             cost: 39,
         }, {
-            name: "Улица Новаторов",
-            weight: 1,
-            cost: 1,
-        },{
+            name: "Улица Академика Опарина",
+            weight: 364,
+            cost: 363,
+        }, {
             name: "Проспект Вернадского",
             weight: 483,
             cost: 17,
         },
         ], 259);
-        this.add_line_in_matrix([{
-            name: "Мичуринский проспект",
-            weight: 473,
-            cost: 60,
-        }, {
-            name: "Проспект Вернадского",
-            weight: 1,
-            cost: 1,
-        },{
-            name: "Улица Новаторов",
-            weight: 483,
-            cost: 17,
-        },
-        ], 260);
-        this.add_line_in_matrix([{
-            name: "Проспект Вернадского",
-            weight: 473,
-            cost: 60,
-        }, {
-            name: "Мичуринский проспект",
-            weight: 1,
-            cost: 1,
-        },{
-            name: "Аминьевское шоссе",
-            weight: 740,
-            cost: 30,
-        },
-        ], 261);
+        this.copy_line(17,260);
+        this.copy_line(156,261);
         this.add_line_in_matrix([{
             name: "Мичуринский проспект",
             weight: 740,
@@ -4513,16 +4065,7 @@ class Graph {
             cost: 96,
         },
         ], 263);
-        this.add_line_in_matrix([{
-            name: "Улица Новаторов",
-            weight: 1,
-            cost: 1,
-        }, {
-            name: "Улица Академика Опарина",
-            weight: 413,
-            cost: 72,
-        },
-        ], 264);
+        this.copy_line(259,264);
         this.add_line_in_matrix([{
             name: "Улица Новаторов",
             weight: 413,
@@ -4593,13 +4136,8 @@ class Graph {
             cost: 38,
         },
         ], 271);
+        this.copy_line(168,272);
         this.add_line_in_matrix([{
-            name: "Сосенки",
-            weight: 710,
-            cost: 38,
-        },
-        ], 272);
-        this.add_line_in_matrix([ {
             name: "Нижегородская улица",
             weight: 394,
             cost: 41,
@@ -4645,20 +4183,7 @@ class Graph {
             cost: 80,
         },
         ], 277);
-        this.add_line_in_matrix([{
-            name: "Юго-восточная улица",
-            weight: 413,
-            cost: 80,
-        }, {
-            name: "Лермонтовский пр-т",
-            weight: 1,
-            cost: 1,
-        },{
-            name: "Улица Дмитриевского",
-            weight: 369,
-            cost: 47,
-        },
-        ], 278);
+        this.copy_line(145,278);
         this.add_line_in_matrix([{
             name: "Косино",
             weight: 369,
@@ -4704,8 +4229,25 @@ class Graph {
         }
     }
 
-    station_name(index){
+    station_name(index) {
         return this.matrix_line[index].name;
+    }
+
+    copy_line(index_first,index_second){
+        this.metro_station_graph[index_second]=this.metro_station_graph[index_first];
+    }
+
+    DFS(st, output, end_index) {
+        let r;
+        output += this.station_name(st).toString()+'->';
+        this.visited[st] = true;
+        if (st ===end_index){
+            console.log(output);
+            return;
+        }
+        for (r = 0; r < this.metro_station_graph.length; r++)
+            if ((this.metro_station_graph[st][r].weight !== 0) && (!this.visited[r]))
+                this.DFS(r,output,end_index);
     }
 
     search_shortest_path(start_index, end_index){
@@ -4720,7 +4262,9 @@ class Graph {
         distance[start_index] = 0;
         let index;// объявление начальной вершины
         let paths = [];
-        let output=this.station_name(start_index)+"->";
+        for (let i = 0; i < this.metro_station_graph.length; i++)
+            paths[i] = this.station_name(start_index)+"->";
+        let output="";
         for (let i = 0; i < this.metro_station_graph.length - 1; i++)             // пока не пройдены все  вершины
         {
             let min = 100000000;
@@ -4736,9 +4280,9 @@ class Graph {
             visited[u] = true;                              // вершина становится посещенной
 
             for (let i = 0; i < this.metro_station_graph.length; i++)                         // пока не пройдены все  вершины
-                if (!visited[i] && this.metro_station_graph[u][i].weight !== 0 && distance[u] !== 1000  && distance[u] + this.metro_station_graph[u][i].weight < distance[i]){
-                    output+=this.station_name(i)+"->";
-                    paths[i] = output;
+                if (!visited[i] && this.metro_station_graph[u][i].weight !== 0 && this.metro_station_graph[u][i].weight !== 1 && distance[u] !== 100000000  && distance[u] + this.metro_station_graph[u][i].weight < distance[i]){
+                    //output+=this.station_name((u!==i?i:u))+"->";
+                    paths[i] = paths[u]+this.station_name(i)+"->";
                     distance[i] = distance[u] + this.metro_station_graph[u][i].weight;
                 }
         }

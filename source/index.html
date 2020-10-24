@@ -1991,10 +1991,12 @@
 <script>
     $('circle').each(function(){
         $(this).on('click', function(){
-            let name = this.className.baseVal;
-            alert(name);
+            alert($('circle').index(this));
         });});
-    document.graph.search_shortest_path(1,247);
+    //document.graph.DFS(0,'',248);
+    document.graph.search_shortest_path(0,7);
+    document.graph.search_shortest_path(0,110);
+    document.graph.search_shortest_path(0,210);
 </script>
 </body>
 </html>
