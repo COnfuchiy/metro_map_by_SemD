@@ -1992,15 +1992,14 @@
     document.graph.search_shortest_path(0, 210);
     $(document).ready(function(){
             let map =  $(".main_map")[0];
-            map.on('mousedown', function(event) { // (1) отследить нажатие
+        $(".main_map").on('mousedown', function(event) { // (1) отследить нажатие
 
 
 
             // передвинуть мяч под координаты курсора
             // и сдвинуть на половину ширины/высоты для центрирования
             function moveAt(pageX, pageY) {
-                map.style.left = pageX - map.offsetWidth / 2 + 'px';
-                map.style.top = pageY - map.offsetHeight / 2 + 'px';
+                $('svg')[0].setAttribute('transform','translate('+(pageX-400)+','+(pageY-400)+')');
             }
 
             function onMouseMove(event) {
@@ -2011,11 +2010,13 @@
             document.addEventListener('mousemove', onMouseMove);
 
             // (4) положить мяч, удалить более ненужные обработчики событий
-                map.onmouseup = function() {
+            $(".main_map").on("mouseup", function() {
                 document.removeEventListener('mousemove', onMouseMove);
-                    map.onmouseup = null;
-            };
+                $(".main_map")[0].onmouseup = null;
+            });
 
+        }).on("dragstart", function() {
+            return false;
         });});
 </script>
 </body>
