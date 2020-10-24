@@ -2001,9 +2001,12 @@
         $(".main_map").on('wheel',function (e) {
             let delta = e.originalEvent.deltaY;
 
-            if (delta <0)
-                scale+=0.1;
-            else scale -= 0.1;
+            if (delta <0){
+                if(scale<2.5)
+                    scale+=0.1;}
+            else
+                if (scale>1)
+                    scale -= 0.1;
 
             let cur_attr = get_current_translate_attr();
             $('svg')[0].setAttribute('transform','scale('+scale+') translate('+cur_attr[0]+','+cur_attr[1]+')');
@@ -2014,10 +2017,10 @@
             function moveAt(pageX, pageY) {
                 if ($('svg')[0].getAttribute('transform')){
                     let cur_attr = get_current_translate_attr();
-                    $('svg')[0].setAttribute('transform','scale('+scale+') translate('+((parseInt(cur_attr[0])+pageX))+','+((parseInt(cur_attr[1])+pageY))+')');
+                    $('svg')[0].setAttribute('transform','scale('+scale+') translate('+((parseInt(cur_attr[0])+pageX/scale))+','+((parseInt(cur_attr[1])+pageY/scale))+')');
                 }
                 else {
-                    $('svg')[0].setAttribute('transform','scale('+parseFloat(scale)+') translate('+pageX+','+pageY+')');
+                    $('svg')[0].setAttribute('transform','scale('+parseFloat(scale)+') translate('+scale*pageX+','+scale*pageY+')');
                 }
             }
 
