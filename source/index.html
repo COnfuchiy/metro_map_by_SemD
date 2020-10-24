@@ -10,7 +10,7 @@
 <body>
 <div class="main_map">
     <svg width="800" height="800" version="1.1" xlmns="http://www.w3.org/2000/svg"
-         style="background-color: white;">
+         style="background-color: white;" transform="scale(1) translate(0,0)">
         <g width="1000" height="1000"
            transform="rotate(0 388.5 186) scale(0.9) translate(50.93333333333348,168.98333333333358)">
             <path id="r1,r1" fill="transparent" stroke="#ed1b35" stroke-width="8"
@@ -1991,19 +1991,38 @@
     document.graph.search_shortest_path(0, 110);
     document.graph.search_shortest_path(0, 210);
     $(document).ready(function(){
+        function get_current_translate_attr() {
+            let cur_attr = $('svg')[0].getAttribute('transform');
+            let cur_trans =  cur_attr.slice(cur_attr.indexOf('translate(')+10,$('svg')[0].getAttribute('transform').length-1);
+            return cur_trans.split(',');
+        }
             let map =  $(".main_map")[0];
-        $(".main_map").on('mousedown', function(event) { // (1) отследить нажатие
+            let scale = 1.0;
+        $(".main_map").on('wheel',function (e) {
+            let delta = e.originalEvent.deltaY;
 
+            if (delta <0)
+                scale+=0.1;
+            else scale -= 0.1;
 
+            let cur_attr = get_current_translate_attr();
+            $('svg')[0].setAttribute('transform','scale('+scale+') translate('+cur_attr[0]+','+cur_attr[1]+')');
 
-            // передвинуть мяч под координаты курсора
-            // и сдвинуть на половину ширины/высоты для центрирования
+            return false;
+        });
+        $(".main_map").on('mousedown', function(event) {
             function moveAt(pageX, pageY) {
-                $('svg')[0].setAttribute('transform','translate('+(pageX-400)+','+(pageY-400)+')');
+                if ($('svg')[0].getAttribute('transform')){
+                    let cur_attr = get_current_translate_attr();
+                    $('svg')[0].setAttribute('transform','scale('+scale+') translate('+((parseInt(cur_attr[0])+pageX))+','+((parseInt(cur_attr[1])+pageY))+')');
+                }
+                else {
+                    $('svg')[0].setAttribute('transform','scale('+parseFloat(scale)+') translate('+pageX+','+pageY+')');
+                }
             }
 
             function onMouseMove(event) {
-                moveAt(event.pageX, event.pageY);
+                moveAt(event.movementX, event.movementY);
             }
 
             // (3) перемещать по экрану
