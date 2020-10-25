@@ -1365,7 +1365,7 @@ let graph_matrix_one_empty_line =
             cost: 0,
         },
         {
-            name: "Коммунарка",
+            name: "Коммунаркa",
             weight: 0,
             cost: 0,
         },
@@ -1447,7 +1447,7 @@ class Graph {
             [9,37,63],
             [10,184,62,84],
             [11,164],
-            [12,94],
+            [12,91],
             [17,260],
             [33,245],
             [34,95],
@@ -1462,7 +1462,7 @@ class Graph {
             [61,163],
             [64,86,211],
             [66,250],
-            [73,161,241],
+            [74,161,241],
             [87,138,166],
             [89,186],
             [90,113],
@@ -1477,19 +1477,304 @@ class Graph {
             [124,227],
             [131,243],
             [139,213],
+            [141,254],
             [145,278],
             [156,261],
             [167,212],
             [168,252,273],
             [177,204],
             [180,264],
-            [182,204],
+            [182,209],
             [191,224],
             [197,229],
             [207.247],
             [216,255],
             [253,274],
 
+        ];
+        this.texts_indexes = [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32,
+            33,
+            34,
+            35,
+            36,
+            37,
+            38,
+            39,
+            40,
+            41,
+            42,
+            43,
+            44,
+            45,
+            46,
+            47,
+            48,
+            49,
+            50,
+            51,
+            52,
+            53,
+            54,
+            55,
+            56,
+            57,
+            58,
+            59,
+            60,
+            61,
+            62,
+            63,
+            64,
+            65,
+            66,
+            67,
+            68,
+            69,
+            70,
+            71,
+            72,
+            73,
+            57,
+            74,
+            75,
+            76,
+            77,
+            78,
+            79,
+            60,
+            80,
+            81,
+            82,
+            5,
+            83,
+            84,
+            39,
+            85,
+            105,
+            12,
+            60,
+            86,
+            87,
+            88,
+            89,
+            90,
+            100,
+            91,
+            92,
+            93,
+            94,
+            95,
+            96,
+            97,
+            98,
+            99,
+            100,
+            101,
+            102,
+            103,
+            104,
+            105,
+            106,
+            107,
+            108,
+            109,
+            110,
+            111,
+            112,
+            113,
+            114,
+            115,
+            116,
+            117,
+            118,
+            119,
+            120,
+            121,
+            122,
+            123,
+            124,
+            125,
+            126,
+            127,
+            128,
+            103,
+            84,
+            129,
+            130,
+            131,
+            132,
+            133,
+            134,
+            135,
+            136,
+            137,
+            138,
+            139,
+            140,
+            141,
+            142,
+            143,
+            144,
+            145,
+            242,
+            146,
+            147,
+            148,
+            59,
+            149,
+            150,
+            151,
+            152,
+            104,
+            153,
+            154,
+            235,
+            155,
+            156,
+            157,
+            158,
+            159,
+            160,
+            161,
+            162,
+            163,
+            164,
+            165,
+            166,
+            167,
+            168,
+            169,
+            170,
+            171,
+            172,
+            173,
+            174,
+            175,
+            176,
+            177,
+            178,
+            179,
+            180,
+            181,
+            182,
+            183,
+            184,
+            185,
+            186,
+            187,
+            188,
+            189,
+            163,
+            190,
+            191,
+            192,
+            193,
+            194,
+            195,
+            196,
+            197,
+            198,
+            199,
+            200,
+            201,
+            202,
+            203,
+            204,
+            205,
+            206,
+            207,
+            208,
+            209,
+            210,
+            43,
+            211,
+            212,
+            213,
+            214,
+            215,
+            216,
+            217,
+            218,
+            219,
+            220,
+            221,
+            222,
+            223,
+            224,
+            149,
+            225,
+            226,
+            227,
+            228,
+            229,
+            230,
+            231,
+            232,
+            233,
+            234,
+            235,
+            236,
+            131,
+            237,
+            238,
+            239,
+            240,
+            241,
+            17,
+            242,
+            243,
+            244,
+            259,
+            245,
+            246,
+            247,
+            248,
+            249,
+            250,
+            251,
+            252,
+            235,
+            236,
+            253,
+            254,
+            255,
+            256,
+            257,
+            258,
+            259,
         ];
         this.create_matrix();
 }
@@ -2489,12 +2774,6 @@ class Graph {
         },
         ], 73);
         this.copy_line(57,74);
-        this.add_line_in_matrix([{
-            name: "Пионерская",
-            weight: 567,
-            cost: 43,
-        },
-        ], 74);
         this.add_line_in_matrix([{
             name: "Кунцевская",
             weight: 567,
@@ -4102,7 +4381,7 @@ class Graph {
             weight: 391,
             cost: 18,
         }, {
-            name: "Коммунарка",
+            name: "Коммунаркa",
             weight: 918,
             cost: 79,
         },
@@ -4118,7 +4397,7 @@ class Graph {
         },
         ], 269);
         this.add_line_in_matrix([{
-            name: "Коммунарка",
+            name: "Коммунаркa",
             weight: 972,
             cost: 47,
         }, {
@@ -4234,72 +4513,176 @@ class Graph {
         return this.matrix_line[index].name;
     }
 
+    get_text_index(station_index){
+        return this.texts_indexes[station_index];
+    }
+
     copy_line(index_first,index_second){
         this.metro_station_graph[index_second]=this.metro_station_graph[index_first];
     }
 
 
 
-    DFS(st, output, end_index) {
+    DFS(st, output, deeeep) {
+        deeeep--;
         let r;
         output += this.station_name(st).toString()+'->';
         this.visited[st] = true;
-        if (st ===end_index){
+        if (st ===0){
             console.log(output);
             return;
         }
         for (r = 0; r < this.metro_station_graph.length; r++)
             if ((this.metro_station_graph[st][r].weight !== 0) && (!this.visited[r]))
-                this.DFS(r,output,end_index);
+                this.DFS(r,output,deeeep);
     }
 
-    search_shortest_path(start_index, end_index){
+
+    search_all_shortest_path(start_index, end_index, type){
+        let data = this.algorimt_wall(start_index, end_index, type);
+        for(let index=0;index< data.distance.length;index++){
+            if (data.distance[index]===100000000){
+                let has_united = false;
+                let united_index = -1;
+                for (let i = 0;i<this.united_station.length ;i++){
+                    if (this.united_station[i].indexOf(index)!==-1){
+                        has_united = true;
+                        united_index = i;
+                    }
+                }
+                let all_paths = [];
+                for (let index of this.united_station[united_index]){
+                    all_paths.push(this.algorimt(start_index, index, type));
+                }
+                let min_index = 0;
+                for (let i=0; i<all_paths.length;i++){
+                    if (all_paths[min_index].distance>all_paths[i].distance){
+                        min_index = i;
+                    }
+                }
+                data.distance[index]= all_paths[min_index].distance;
+            }
+        }
+        return data;
+    }
+
+    search_shortest_path(start_index, end_index, type){
+        let has_united = false;
+        let united_index = -1;
+        for (let i = 0;i<this.united_station.length ;i++){
+            if (this.united_station[i].indexOf(end_index)!==-1){
+                has_united = true;
+                united_index = i;
+            }
+        }
+        if (united_index!==-1){
+            let all_paths = [];
+            for (let index of this.united_station[united_index]){
+                all_paths.push(this.algorimt(start_index, index, type));
+            }
+            let min_index = 0;
+            for (let i=0; i<all_paths.length;i++){
+                if (all_paths[min_index].distance>all_paths[i].distance){
+                    min_index = i;
+                }
+            }
+            let path = all_paths[min_index].path.split('->');
+            path[path.length-2] = end_index;
+            all_paths[min_index].path = path.join('->');
+            return all_paths[min_index];
+        }
+        else
+            return this.algorimt(start_index, end_index, type);
+    }
+
+    algorimt_wall(start_index, end_index, type){
         let distance = [];
         let visited = [];
-        for (let i = 0; i < this.metro_station_graph.length; i++)
-        {
-            distance[i] = 100000000;                             // массив расстояний
-            visited[i] = false;                             // массив пройденных вершин
+        let weights = [];
+        if (type!=="алгоритм флойда"){
+            for (let i = 0; i < this.metro_station_graph.length; i++) {distance[i] = 100000000;
+                visited[i] = false;
+            }
+            distance[start_index] = 0;
+            let index;
+            let paths = [];
+            for (let i = 0; i < this.metro_station_graph.length; i++){
+                paths[i] = start_index+"->";
+                weights[i] = "0->"
+            }
+            for (let i = 0; i < this.metro_station_graph.length - 1; i++)
+            {
+                let min = 100000000;for (let j = 0;  j< this.metro_station_graph.length; j++)if (!visited[j] && distance[j] <= min)
+            {min = distance[j];
+                index = j;
+            }let u = index;
+                visited[u] = true;
+                for (let i = 0; i < this.metro_station_graph.length; i++)
+                    if (!visited[i] && this.metro_station_graph[u][i].weight !== 0 && this.metro_station_graph[u][i].weight !== 1 && distance[u] !== 100000000  && distance[u] + this.metro_station_graph[u][i].weight < distance[i]){
+                        paths[i] = paths[u]+i+"->";weights[i]=weights[u] + (distance[u] + this.metro_station_graph[u][i].weight)+'->';
+                        distance[i] = distance[u] + this.metro_station_graph[u][i].weight;
+                    }}return {path:paths,
+                weights:weights,
+                distance:distance,}
+        } else {for(let k = 0; k < this.metro_station_graph.length; k++) {for(let i = 0; i < this.metro_station_graph.length; i++) {
+            for(let j = 0; j < this.metro_station_graph.length; j++) {
+                this.metro_station_grap[i][j].weight = Math.min(this.metro_station_grap[i][j], this.metro_station_grap[i][k] + this.metro_station_grap[k][j]);
+            }
+        }
+        }
+            return {
+                path:paths[end_index],
+                weights:weights[end_index],
+                distance:distance[end_index],
+            }
         }
 
-        distance[start_index] = 0;
-        let index;// объявление начальной вершины
-        let paths = [];
-        for (let i = 0; i < this.metro_station_graph.length; i++)
-            paths[i] = this.station_name(start_index)+"->";
-        let output="";
-        for (let i = 0; i < this.metro_station_graph.length - 1; i++)             // пока не пройдены все  вершины
-        {
-            let min = 100000000;
+    }
 
-            for (let j = 0;  j< this.metro_station_graph.length; j++)                         // пока не пройдены все  вершины
-                if (!visited[j] && distance[j] <= min)      // если вершина не посещена и расстояние меньше локального минимума
-                {
-                    min = distance[j];                      // то расстояние записывается как минимальное
-                    index = j;
-                }
-
-            let u = index;
-            visited[u] = true;                              // вершина становится посещенной
-
-            for (let i = 0; i < this.metro_station_graph.length; i++)                         // пока не пройдены все  вершины
-                if (!visited[i] && this.metro_station_graph[u][i].weight !== 0 && this.metro_station_graph[u][i].weight !== 1 && distance[u] !== 100000000  && distance[u] + this.metro_station_graph[u][i].weight < distance[i]){
-                    //output+=this.station_name((u!==i?i:u))+"->";
-                    paths[i] = paths[u]+this.station_name(i)+"->";
-                    distance[i] = distance[u] + this.metro_station_graph[u][i].weight;
+    algorimt(start_index, end_index, type){
+        let distance = [];
+        let visited = [];
+        let weights = [];
+        if (type!=="алгоритм флойда"){
+            for (let i = 0; i < this.metro_station_graph.length; i++) {distance[i] = 100000000;
+                visited[i] = false;
+            }
+            distance[start_index] = 0;
+            let index;
+            let paths = [];
+            for (let i = 0; i < this.metro_station_graph.length; i++){
+                paths[i] = start_index+"->";
+                weights[i] = "0->"
+            }
+            for (let i = 0; i < this.metro_station_graph.length - 1; i++)
+            {
+                let min = 100000000;for (let j = 0;  j< this.metro_station_graph.length; j++)if (!visited[j] && distance[j] <= min)
+                    {min = distance[j];
+                        index = j;
+                    }let u = index;
+                visited[u] = true;
+                for (let i = 0; i < this.metro_station_graph.length; i++)
+                    if (!visited[i] && this.metro_station_graph[u][i].weight !== 0 && this.metro_station_graph[u][i].weight !== 1 && distance[u] !== 100000000  && distance[u] + this.metro_station_graph[u][i].weight < distance[i]){
+                        paths[i] = paths[u]+i+"->";weights[i]=weights[u] + (distance[u] + this.metro_station_graph[u][i].weight)+'->';
+                        distance[i] = distance[u] + this.metro_station_graph[u][i].weight;
+                    }}return {path:paths[end_index],
+                weights:weights[end_index],
+                distance:distance[end_index],}
+        } else {for(let k = 0; k < this.metro_station_graph.length; k++) {for(let i = 0; i < this.metro_station_graph.length; i++) {
+                    for(let j = 0; j < this.metro_station_graph.length; j++) {
+                        this.metro_station_grap[i][j].weight = Math.min(this.metro_station_grap[i][j], this.metro_station_grap[i][k] + this.metro_station_grap[k][j]);
+                    }
                 }
         }
-        output = "";
-        let m=start_index;
-            if (distance[end_index] !== 100000000)
-                output += this.station_name(m) + " > " + this.station_name(end_index) + " = " + distance[end_index] + "\n";
-            else
-                output += this.station_name(m) + " > " + this.station_name(end_index) + " = маршрут недоступен" +"\n";
-        console.log(paths[end_index]);
-        console.log(output);
+            return {
+                path:paths[end_index],
+                weights:weights[end_index],
+                distance:distance[end_index],
+            }
+        }
 
     }
 }
 
-document.graph = new Graph(graph_matrix_one_empty_line);
+
 

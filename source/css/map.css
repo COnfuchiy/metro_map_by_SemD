@@ -1,14 +1,31 @@
-.main_map{
-    user-select: none;
-    width: 1000px;
-    height: 1000px;
-    overflow: hidden;
+::-webkit-scrollbar {
+    width: 0;
+}
+body{
+    margin: 0;
+}
 
+.path-about-area{
+    height: 400px;
+    overflow-x: auto;
+}
+.main_map{
+    position: absolute;
+    top: 0;
+    left: 0;
+    user-select: none;
+    width: 70%;
+    max-height: 100%;
+    overflow: hidden;
+    float: left;
     cursor: grab;
 }
+.sidebar{
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 30%;
+    min-height: 100%;
+}
 svg{
-    overflow: hidden;
-    top: 200px;
-    left: 200px;
-    position: relative;
 }
