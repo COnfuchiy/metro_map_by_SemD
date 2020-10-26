@@ -4523,21 +4523,6 @@ class Graph {
 
 
 
-    DFS(st, output, deeeep) {
-        deeeep--;
-        let r;
-        output += this.station_name(st).toString()+'->';
-        this.visited[st] = true;
-        if (st ===0){
-            console.log(output);
-            return;
-        }
-        for (r = 0; r < this.metro_station_graph.length; r++)
-            if ((this.metro_station_graph[st][r].weight !== 0) && (!this.visited[r]))
-                this.DFS(r,output,deeeep);
-    }
-
-
     search_all_shortest_path(start_index, end_index, type){
         let data = this.algorimt_wall(start_index, end_index, type);
         for(let index=0;index< data.distance.length;index++){
@@ -4564,6 +4549,18 @@ class Graph {
             }
         }
         return data;
+    }
+
+    search_shortest_path_by_cost(start_index,num_station, type){
+       let data =  this.algorimt_cost(start_index, type);
+       for (let i = data.distance.length/2+1;i<data.distance.length;i++){
+           if (data.path[i].split('->').length>num_station+1){
+               return {
+                   path:data.path[i].split('->').splice(1,num_station),
+                   cost:data.distance[i]
+               }
+           }
+       }
     }
 
     search_shortest_path(start_index, end_index, type){
@@ -4626,14 +4623,58 @@ class Graph {
                 distance:distance,}
         } else {for(let k = 0; k < this.metro_station_graph.length; k++) {for(let i = 0; i < this.metro_station_graph.length; i++) {
             for(let j = 0; j < this.metro_station_graph.length; j++) {
-                this.metro_station_grap[i][j].weight = Math.min(this.metro_station_grap[i][j], this.metro_station_grap[i][k] + this.metro_station_grap[k][j]);
+                this.metro_station_grap[end_index][j].weight = Math.min(this.metro_station_grap[i][j], this.metro_station_grap[i][k] + this.metro_station_grap[k][j]);
             }
         }
         }
             return {
-                path:paths[end_index],
-                weights:weights[end_index],
-                distance:distance[end_index],
+                path:paths,
+                weights:weights,
+                distance:distance,
+            }
+        }
+
+    }
+
+    algorimt_cost(start_index, type){
+        let distance = [];
+        let visited = [];
+        let costs = [];
+        if (type!=="алгоритм флойда"){
+            for (let i = 0; i < this.metro_station_graph.length; i++) {distance[i] = 100000000;
+                visited[i] = false;
+            }
+            distance[start_index] = 0;
+            let index;
+            let paths = [];
+            for (let i = 0; i < this.metro_station_graph.length; i++){
+                paths[i] = start_index+"->";
+                costs[i] = "0->"
+            }
+            for (let i = 0; i < this.metro_station_graph.length - 1; i++)
+            {
+                let min = 100000000;for (let j = 0;  j< this.metro_station_graph.length; j++)if (!visited[j] && distance[j] <= min)
+            {min = distance[j];
+                index = j;
+            }let u = index;
+                visited[u] = true;
+                for (let i = 0; i < this.metro_station_graph.length; i++)
+                    if (!visited[i] && this.metro_station_graph[u][i].cost !== 0 && this.metro_station_graph[u][i].cost !== 1 && distance[u] !== 100000000  && distance[u] + this.metro_station_graph[u][i].cost < distance[i]){
+                        paths[i] = paths[u]+i+"->";costs[i]=costs[u] + (distance[u] + this.metro_station_graph[u][i].cost)+'->';
+                        distance[i] = distance[u] + this.metro_station_graph[u][i].cost;
+                    }}return {path:paths,
+                costs:costs,
+                distance:distance,}
+        } else {for(let k = 0; k < this.metro_station_graph.length; k++) {for(let i = 0; i < this.metro_station_graph.length; i++) {
+            for(let j = 0; j < this.metro_station_graph.length; j++) {
+                this.metro_station_grap[i][j].cost = Math.min(this.metro_station_grap[i][j], this.metro_station_grap[i][k] + this.metro_station_grap[k][j]);
+            }
+        }
+        }
+            return {
+                path:paths,
+                weights:costs,
+                distance:distance,
             }
         }
 

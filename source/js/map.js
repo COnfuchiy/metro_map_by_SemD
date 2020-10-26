@@ -51,6 +51,8 @@ class Navigation {
     }
 
     create_path_about(data) {
+        $('.path-about-area').empty();
+        $('.path-buttons-area').empty();
         $('.path-buttons-area').append(`
             <a class="clear-map" onclick="document.nav.discharge_stations()">Очистить</a>
         `);
@@ -90,12 +92,14 @@ class Navigation {
     }
 
     all_middle_station() {
+        $('.path-about-area').empty();
+        $('.path-buttons-area').empty();
         let path_data = this.graph.search_all_shortest_path(9, 172, '');
         $('.path-buttons-area').append(`
-            <a class="clear-map" onclick="$('.path-about-area').empty();">Очистить</a>
+            <a class="clear-map" onclick="document.nav.discharge_stations()">Очистить</a>
         `);
         for (let i = 1; i < path_data.distance.length - 1; i++)
-            if (path_data.distance[i] !== 0 && i!==37 && i!==63)
+            if (path_data.distance[i] !== 0 && i !== 37 && i !== 63)
                 $('.path-about-area').append(`
             <div class="one-path">` + this.graph.station_name(9) + `→` + this.graph.station_name(i) +
                     `=`
@@ -120,6 +124,24 @@ class Navigation {
         this.map_svg.setAttribute('transform', 'scale(' + this.scale + ') translate(' + ((parseInt(cur_attr[0]) + deltaX / this.scale)) + ',' + ((parseInt(cur_attr[1]) + deltaY / this.scale)) + ')');
     }
 
+    view_num_paths() {
+        $('.path-about-area').empty();
+        $('.path-buttons-area').empty();
+        let num_station = prompt('Введите количество странции');
+        let data = this.graph.search_shortest_path_by_cost(9, parseInt(num_station), '');
+        $('.path-buttons-area').append(`<a class="clear-map" onclick="document.nav.discharge_stations()">Очистить</a>`);
+        $('.path-about-area').append(`<div class="one-path"></div>`);
+        for (let i = 0; i < data.path.length; i++) {
+            if (i !== data.path.length - 1)
+                $('.one-path').append(this.graph.station_name(data.path[i]) + `→`);
+            else {
+                $('.one-path').append(this.graph.station_name(data.path[i]));
+            }
+        }
+        $('.one-path').append(`=` + data.cost);
+
+
+    }
 
     calculate_path() {
         let path_data = this.graph.search_shortest_path(this.selected_station[0], this.selected_station[1], '');
@@ -161,10 +183,6 @@ $(document).ready(function () {
         });
 
     });
-    // $(".sidebar").on('wheel', function (e) {
-    //
-    //     return false;
-    // });
     $(".main_map").on('wheel', function (e) {
         document.nav.scale_map(e.originalEvent.deltaY);
         return false;
@@ -182,6 +200,7 @@ $(document).ready(function () {
             document.removeEventListener('mousemove', onMouseMove);
             $(".main_map")[0].onmouseup = null;
         });
+        return false;
 
     }).on("dragstart", function () {
         return false;
